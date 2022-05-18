@@ -58,7 +58,7 @@ h3 {
 .site-nav-list,
 .contacts {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 /*Задаем отступы для ссылок навигационного меню*/
@@ -70,6 +70,7 @@ h3 {
 .page-header {
   border-bottom: 1px solid var(--border-color);
   padding-top: 24px;
+  padding-bottom: 25px;
 }
 
 /*Оформление логотипа*/
@@ -113,11 +114,12 @@ span {
 .page-header .link:focus {
   color: var(--accent-color);
 }
-
+.site-nav-list .link {position:relative;}
 .site-nav-list .link.current {
   color: var(--accent-color);
 }
 .site-nav-list .link.current::after {
+  position:absolute;
   content: '';
   display: block;
   width: 100%;
@@ -642,12 +644,18 @@ address {
   top: 0px;
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+   visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+  transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: visible;
+  transform: scale(1);
 }
 
 .is-hidden {
-  opacity: 1;
+  opacity: 0;
   pointer-events: none;
   visibility: hidden;
+  transform: scale(0);
 }
 
 .modal {
