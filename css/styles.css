@@ -54,7 +54,7 @@ h3 {
 .site-nav-list,
 .contacts {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 /*Задаем отступы для ссылок навигационного меню*/
@@ -66,7 +66,7 @@ h3 {
 .page-header {
   border-bottom: 1px solid var(--border-color);
   padding-top: 24px;
-  padding-bottom: 25px;
+  
 }
 
 /*Оформление логотипа*/
@@ -106,6 +106,7 @@ span {
 .page-header .link:hover,
 .page-header .link:focus {
   color: var(--accent-color);
+  
 }
 /* .contacts .contact-mail,.contacts .contact-tel {color: var(--secondary-text-color);} */
 
@@ -119,6 +120,15 @@ span {
 /*Выделение текущей ссылки в Nav menu*/
 .site-nav-list .link.current {
   color: var(--accent-color);
+}
+.site-nav-list .link.current::after {
+  content: '';
+  display: block;
+  width: 100%;
+  background-color: var(--accent-color);
+  height: 4px;
+  border-radius: 2px;
+  margin-top: 28px;
 }
 
 /*Задаем отступы для адреса в хедере*/
@@ -266,12 +276,27 @@ span {
   line-height: 1.71;
 }
 
-/*Оформление наших задач*/
+/*-----------------------------Оформление наших задач-------------------*/
 
 .task-list {
   display: flex;
   gap: 30px;
+  position: relative;
 }
+.task-title {position:absolute;
+  display: inline-block;
+width: 370px;
+min-height: 70px;
+bottom: 0;
+padding-top: 27px;
+background-color: rgba(47, 48, 58, 0.8);
+font-weight: 700;
+font-size: 14px;
+line-height: 1.17;
+text-align: center;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+color: var(--white-color);}
 
 .task-img {
   display: block;
@@ -340,7 +365,7 @@ span {
 .social-link-item {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -355,7 +380,8 @@ span {
 .social-link-item:focus {
   background-color: var(--accent-color);
 }
-
+.social-link-link{ display:block;
+margin-top: 9px;}
 .social-link-item:hover .social-link-icon {
   fill: var(--white-color);
 }
@@ -487,8 +513,9 @@ address {
   cursor: pointer;
   font-weight: 500;
   font-size: 16px;
-  line-height: 1, 62;
+  line-height: 1.62;
   text-align: center;
+  border: var(--background-color);
 }
 
 .filter-button:hover,
@@ -516,6 +543,21 @@ address {
   flex-wrap: wrap;
   gap: 30px;
 }
+.project-item {position: relative;}
+
+.project-expl {position:absolute;
+  top:0;
+  left:0;
+width: 370px;
+height: 294px;
+padding: 63px 24px;
+font-size: 18px;
+line-height: 1.56;
+letter-spacing: 0.03em;
+color:var(--white-color);
+background-color: rgba(33, 150, 243, 0.9);
+opacity: 0;
+}
 
 .projects-title {
   text-align: center;
@@ -526,6 +568,7 @@ address {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.project-item:hover .project-expl {opacity:1;}
 /*Снимаем отступы с крайних карточек*/
 .project-list > .project-item:nth-last-child(-n + 3) {
   margin-bottom: 0px;
@@ -563,4 +606,37 @@ address {
   padding-top: 20px;
   padding-bottom: 20px;
   border: 1px solid var(--border-color);
+  max-width: 370px;
 }
+/* ---------------------Оформление модального окна-------------------- */
+
+.backdrop {width: 100vw;
+height: 100vh;
+position:fixed;
+top: 0px;
+background-color: rgba(0, 0, 0, 0.2);
+opacity: 1;
+}
+
+.is-hidden{opacity: 1;
+pointer-events: none;
+visibility: hidden;}
+
+.modal {width: 528px;
+min-height: 581px;
+background-color: var(--white-color);
+position:absolute;
+top: 50%;
+left: 60%;
+transform: translate(-50%,-50%);}
+
+.close-btn {width: 30px;
+  height: 30px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+position:absolute;
+top: 9px;
+right: 9px;}
+
+.close-btn-icon {width: 18px; height: 18px;}
